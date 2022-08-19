@@ -2,19 +2,50 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: color 350ms linear, background-color 350ms linear,
+    box-shadow 350ms linear;
 }
 
-body {
-  height: 100vh;
-  background-color: hsl(0deg, 0%, 85%);
+/* Defining colors */
+.App[data-theme="light"] {
+  --background: hsl(0deg, 0%, 90%);
+  --light-shadow-button: hsla(0deg, 0%, 100%, 75%);
+  --dark-shadow-button: hsla(0deg, 0%, 40%, 25%);
+  --light-shadow-profile: hsla(0deg, 0%, 100%, 75%);
+  --dark-shadow-profile: hsla(0deg, 0%, 40%, 35%);
 }
+.App[data-theme="dark"] {
+  --background: hsl(0deg, 0%, 15%);
+  --light-shadow-button: hsla(0deg, 0%, 30%, 40%);
+  --dark-shadow-button: hsla(0deg, 0%, 0%, 40%);
+  --light-shadow-profile: hsla(0deg, 0%, 30%, 30%);
+  --dark-shadow-profile: hsla(0deg, 0%, 0%, 30%);
+}
+
+/* General rules */
+.neumorphism--btn {
+  box-shadow: -2px -2px 8px var(--light-shadow-button),
+    2px 2px 8px var(--dark-shadow-button);
+}
+.neumorphism--profile {
+  box-shadow: -4px -4px 8px var(--light-shadow-profile),
+    4px 4px 8px var(--dark-shadow-profile);
+}
+
+/* Container */
 .App {
+  height: 100vh;
+  background-color: var(--background);
+}
+
+.wrapper {
   display: grid;
   height: 100%;
   grid-template-rows: 30vh 1fr;
   place-items: center;
 }
 
+/* Node */
 .profile-container {
   height: 100%;
   width: 100%;
@@ -29,9 +60,7 @@ body {
   height: var(--side-length);
   overflow: hidden;
   border-radius: 50%;
-  background-color: hsl(0deg, 0%, 85%);
-  box-shadow: 2px 4px 9px hsla(0deg, 0%, 30%, 60%),
-    -2px -4px 9px hsl(0deg, 0%, 100%);
+  background-color: var(--background);
   padding: 0.3em;
 }
 
@@ -59,8 +88,6 @@ ul li {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: -2px -2px 8px hsla(0deg, 0%, 100%, 90%),
-    2px 2px 8px hsla(0deg, 0%, 40%, 20%);
 }
 
 .icon {
@@ -77,4 +104,51 @@ ul li {
 
 .codesandbox svg {
   top: 3px;
+}
+
+/* Darkmode slider */
+
+.darkmode-btn {
+  --y-dimension: 25px;
+  --x-dimension: 40px;
+  position: absolute;
+  top: 1em;
+  right: 2em;
+  background: var(--light-shadow-button);
+  width: var(--x-dimension);
+  height: var(--y-dimension);
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 1000;
+  isolation: isolate;
+  cursor: pointer;
+}
+
+.darkmode-slider-container {
+  --offset: 4px;
+  position: absolute;
+  width: calc(var(--x-dimension) - var(--offset));
+  height: calc(var(--y-dimension) - var(--offset));
+  top: calc(var(--offset) / 2);
+  left: calc(var(--offset) / 2);
+  border-radius: inherit;
+  background: var(--background);
+}
+
+.darkmode-slider {
+  position: absolute;
+  content: "";
+  top: calc(var(--offset) / 4);
+  left: calc(var(--offset) / 4);
+  width: calc(var(--y-dimension) * 0.7);
+  height: calc(var(--y-dimension) * 0.7);
+  border-radius: 50%;
+  background: red;
+  transition: transform 250ms ease-in-out;
+}
+
+.darkmode-slider.active {
+  /* TODO: figure out the calculation for this */
+  transform: translateX(calc(var(--x-dimension) - 25px));
+  background-color: blue;
 }
