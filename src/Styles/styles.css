@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Electrolize&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: color 350ms linear, background-color 350ms linear,
-    box-shadow 350ms linear;
+  transition: border-color 350ms linear, color 350ms linear,
+    background-color 350ms linear, box-shadow 350ms linear;
 }
 
 /* Defining colors */
@@ -13,6 +14,8 @@
   --dark-shadow-button: hsla(0deg, 0%, 40%, 25%);
   --light-shadow-profile: hsla(0deg, 0%, 100%, 75%);
   --dark-shadow-profile: hsla(0deg, 0%, 40%, 35%);
+  --text: hsla(0deg, 0%, 20%, 80%);
+  --border: hsla(0deg, 0%, 100%, 20%);
 }
 .App[data-theme="dark"] {
   --background: hsl(0deg, 0%, 15%);
@@ -20,28 +23,44 @@
   --dark-shadow-button: hsla(0deg, 0%, 0%, 40%);
   --light-shadow-profile: hsla(0deg, 0%, 30%, 30%);
   --dark-shadow-profile: hsla(0deg, 0%, 0%, 30%);
+  --text: hsla(0deg, 0%, 60%, 80%);
+  --border: hsla(0deg, 0%, 30%, 10%);
 }
 
 /* General rules */
 .neumorphism--btn {
   box-shadow: -2px -2px 8px var(--light-shadow-button),
     2px 2px 8px var(--dark-shadow-button);
+  border: 1px solid var(--border);
 }
 .neumorphism--profile {
   box-shadow: -4px -4px 8px var(--light-shadow-profile),
     4px 4px 8px var(--dark-shadow-profile);
+  border: 1px solid var(--border);
+}
+
+a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+ul li {
+  list-style: none;
 }
 
 /* Container */
 .App {
   height: 100vh;
   background-color: var(--background);
+  color: var(--text);
+  font-family: Electrolize;
+  font-size: 1.2em;
 }
 
 .wrapper {
   display: grid;
   height: 100%;
-  grid-template-rows: 30vh 1fr;
+  grid-template-rows: 40vh 1fr;
   place-items: center;
 }
 
@@ -49,9 +68,17 @@
 .profile-container {
   height: 100%;
   width: 100%;
-  display: grid;
-  place-items: center;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
   padding: 2em;
+}
+
+.profile-container h1 {
+  color: var(--text);
 }
 
 .profile {
@@ -71,13 +98,9 @@
   border-radius: 50%;
 }
 
-a {
-  text-decoration: none;
-  color: black;
-}
-
-ul li {
-  list-style: none;
+main {
+  align-self: start;
+  margin-top: 1rem;
 }
 
 .link-container {
@@ -107,48 +130,43 @@ ul li {
 }
 
 /* Darkmode slider */
-
 .darkmode-btn {
-  --y-dimension: 25px;
-  --x-dimension: 40px;
   position: absolute;
-  top: 1em;
-  right: 2em;
-  background: var(--light-shadow-button);
-  width: var(--x-dimension);
-  height: var(--y-dimension);
-  border-radius: 20px;
-  overflow: hidden;
-  z-index: 1000;
-  isolation: isolate;
-  cursor: pointer;
-}
-
-.darkmode-slider-container {
-  --offset: 4px;
-  position: absolute;
-  width: calc(var(--x-dimension) - var(--offset));
-  height: calc(var(--y-dimension) - var(--offset));
-  top: calc(var(--offset) / 2);
-  left: calc(var(--offset) / 2);
-  border-radius: inherit;
-  background: var(--background);
-}
-
-.darkmode-slider {
-  position: absolute;
-  content: "";
-  top: calc(var(--offset) / 4);
-  left: calc(var(--offset) / 4);
-  width: calc(var(--y-dimension) * 0.7);
-  height: calc(var(--y-dimension) * 0.7);
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3em;
   border-radius: 50%;
-  background: red;
-  transition: transform 250ms ease-in-out;
+  overflow: hidden;
 }
 
-.darkmode-slider.active {
-  /* TODO: figure out the calculation for this */
-  transform: translateX(calc(var(--x-dimension) - 25px));
-  background-color: blue;
+.darkmode-btn .indicator {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.darkmode-btn svg {
+  width: 1.2em;
+  height: 1.2em;
+  z-index: 1;
+}
+
+.darkmode-btn.active {
+  border-color: hsla(0deg, 0%, 0%, 0%);
+}
+.darkmode-btn.active .indicator {
+  background-color: var(--background);
+  box-shadow: inset 2px 2px 5px var(--dark-shadow-button),
+    inset -2px -2px 5px var(--light-shadow-button);
+}
+
+.darkmode-btn.active svg {
+  color: var(--text);
 }

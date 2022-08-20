@@ -16,7 +16,9 @@ function App() {
           <div className="profile neumorphism--profile">
             <img src={Profile} alt="profile" />
           </div>
+          <h1>haln</h1>
         </div>
+
         <main>
           <ul>
             <li>

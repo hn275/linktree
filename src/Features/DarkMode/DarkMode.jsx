@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
+import { FiMoon } from "react-icons/fi";
 import "Styles/styles.css";
 
 export const DarkMode = ({ node }) => {
-  const slider = useRef(null);
+  const darkModeButton = useRef(null);
   const [darkmode, setDarkmode] = useState(true);
   const handleToggle = () => {
     setDarkmode((darkmode) => !darkmode);
@@ -14,16 +15,20 @@ export const DarkMode = ({ node }) => {
   }, [darkmode]);
 
   useEffect(() => {
-    const sliderBtn = slider.current;
+    const sliderBtn = darkModeButton.current;
     if (darkmode) sliderBtn.classList.add("active");
     if (!darkmode) sliderBtn.classList.remove("active");
   }, [darkmode]);
 
   return (
-    <div onClick={handleToggle} className="darkmode-btn neumorphism--btn">
-      <div className="darkmode-slider-container">
-        <span ref={slider} className="darkmode-slider"></span>
-      </div>
+    <div
+      aria-label="dark mode toggle"
+      onClick={handleToggle}
+      className="darkmode-btn neumorphism--btn"
+      ref={darkModeButton}
+    >
+      <FiMoon />
+      <div className="indicator"></div>
     </div>
   );
 };
