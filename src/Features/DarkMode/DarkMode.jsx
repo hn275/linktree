@@ -12,7 +12,7 @@ export const DarkMode = ({ node }) => {
   useEffect(() => {
     // set mode according to `darkmode` state
     node.current.dataset.theme = darkmode ? "dark" : "light";
-  }, [darkmode]);
+  }, [darkmode, node]);
 
   useEffect(() => {
     const sliderBtn = darkModeButton.current;
