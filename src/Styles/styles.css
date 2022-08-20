@@ -48,6 +48,18 @@ ul li {
   list-style: none;
 }
 
+@keyframes blurredIn {
+  0% {
+    filter: blur(6px);
+  }
+  10% {
+    filter: blur(6px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+
 /* Container */
 .App {
   height: 100vh;
@@ -62,6 +74,8 @@ ul li {
   height: 100%;
   grid-template-rows: 40vh 1fr;
   place-items: center;
+  animation-name: blurredIn;
+  animation-duration: 2s;
 }
 
 /* Node */
@@ -89,12 +103,15 @@ ul li {
   border-radius: 50%;
   background-color: var(--background);
   padding: 0.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .profile img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   border-radius: 50%;
 }
 
@@ -130,10 +147,12 @@ main {
 }
 
 /* Darkmode slider */
-.darkmode-btn {
-  position: absolute;
+.darkmode-toggle {
+  position: fixed;
   top: 1rem;
   right: 1rem;
+}
+.darkmode-btn {
   display: flex;
   justify-content: center;
   align-items: center;

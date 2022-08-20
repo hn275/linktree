@@ -8,10 +8,10 @@ function App() {
   const appRef = useRef(null);
   return (
     <div ref={appRef} className="App" data-theme="light">
-      <div className="darkmode-toggle">
-        <DarkMode node={appRef} />
-      </div>
       <div className="wrapper">
+        <div className="darkmode-toggle">
+          <DarkMode node={appRef} />
+        </div>
         <div className="profile-container">
           <div className="profile neumorphism--profile">
             <img src={Profile} alt="profile" />
@@ -21,20 +21,23 @@ function App() {
 
         <main>
           <ul>
-            <li>
-              <div className="link-container neumorphism--btn">
-                <span className="icon">
-                  <FiHome />
-                </span>
-                <a href="#">Home</a>
-              </div>
-            </li>
+            {/* TODO: uncomment this */}
+            {/* <li> */}
+            {/*   <div className="link-container neumorphism--btn"> */}
+            {/*     <span className="icon"> */}
+            {/*       <FiHome /> */}
+            {/*     </span> */}
+            {/*     <a href="#">Home</a> */}
+            {/*   </div> */}
+            {/* </li> */}
             <li>
               <div className="link-container neumorphism--btn">
                 <span className="icon">
                   <FiLinkedin />
                 </span>
-                <a href="#">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/hal-nguyen-48a22b22a/">
+                  LinkedIn
+                </a>
               </div>
             </li>
             <li>
@@ -42,7 +45,7 @@ function App() {
                 <span className="icon">
                   <FiGithub />
                 </span>
-                <a href="#">Github</a>
+                <a href="https://github.com/hn275">Github</a>
               </div>
             </li>
             <li>
@@ -50,7 +53,9 @@ function App() {
                 <span className="icon codesandbox">
                   <FiCodesandbox />
                 </span>
-                <a href="#">CodeSandBox</a>
+                <a href="https://codesandbox.io/dashboard/all/Frontend%20Mentor?workspace=c954f860-5d82-47a3-acee-2fe30e310659">
+                  CodeSandBox
+                </a>
               </div>
             </li>
           </ul>
