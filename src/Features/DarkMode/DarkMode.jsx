@@ -4,7 +4,7 @@ import "Styles/styles.css";
 
 export const DarkMode = ({ node }) => {
   const darkModeButton = useRef(null);
-  const [darkmode, setDarkmode] = useState(true);
+  const [darkmode, setDarkmode] = useState(false);
   const handleToggle = () => {
     setDarkmode((darkmode) => !darkmode);
   };

@@ -51,9 +51,11 @@ ul li {
 @keyframes blurredIn {
   0% {
     filter: blur(6px);
+    opacity: 0;
   }
-  10% {
+  50% {
     filter: blur(6px);
+    opacity: 0;
   }
   100% {
     filter: blur(0px);
@@ -75,7 +77,7 @@ ul li {
   grid-template-rows: 40vh 1fr;
   place-items: center;
   animation-name: blurredIn;
-  animation-duration: 2s;
+  animation-duration: 1.6s;
 }
 
 /* Node */
@@ -181,7 +183,6 @@ main {
   border-color: hsla(0deg, 0%, 0%, 0%);
 }
 .darkmode-btn.active .indicator {
-  background-color: var(--background);
   box-shadow: inset 2px 2px 5px var(--dark-shadow-button),
     inset -2px -2px 5px var(--light-shadow-button);
 }

@@ -1,3 +1,8 @@
-# Linktree clone for my Instagram
+# Linktree clone
 
-Neumorphism design
+Neumorphism design, supports dark/light mode
+
+## Screenshots
+
+![Light theme](./screenshot/light.png)
+![Dark theme](./screenshot/dark.png)
